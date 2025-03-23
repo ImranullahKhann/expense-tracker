@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'PT Sans'; 
+    src: url('assets/PT-Sans/PTSans-Regular.ttf') format('woff'); 
+    font-weight: 400; 
+    font-style: normal; 
+}
+
+@font-face {
+    font-family: 'Boldonse'; 
+    src: url('assets/Boldonse/Boldonse-Regular.ttf') format('woff'); 
+    font-weight: 400; 
+    font-style: normal; 
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'PT Sans', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: Boldonse, sans-serif;
+}
+
+
+
