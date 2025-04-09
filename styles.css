@@ -19,9 +19,169 @@
     font-family: 'PT Sans', Arial, Helvetica, sans-serif;
 }
 
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+html {
+    height: 100%;
+}
+
+header {
+    /*
+    cool gradient 
+    background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9);  
+    */
+    background: linear-gradient(to right, #e1eec3, #f05053);
+    color: white;
+    text-align: center;
+    box-shadow: 
+    inset 0 0 10px rgba(0,0,0,0.3), /* Inner shadow for depth */
+    0 0 10px rgba(0,0,0,0.5); /* Outer shadow for lift */
+    display: inline-block;
+}
+
 h1 {
     font-family: Boldonse, sans-serif;
 }
 
+footer {
+    background: linear-gradient(to right, #e1eec3, #f05053);
+    height: 20px;
+}
 
+main {
+    display: flex;
+    justify-content: space-evenly;
+}
 
+.expenses,.chart {
+    box-shadow: 
+    inset 0 0 10px rgba(0,0,0,0.3), /* Inner shadow for depth */
+    0 0 10px rgba(0,0,0,0.5); /* Outer shadow for lift */
+    display: block;
+    background: #FFF2F2;
+    height: 400px;
+    width: 440px;
+    padding: 10px;
+}
+
+h3 {
+    color: #2D336B;
+    text-align: center;
+    border-bottom: 3px solid #A9B5DF;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.expense-tracker {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.add-expense>button {
+    width: 100%;
+}
+
+.add-expense>button {
+    width: 100%;
+    background-color: #7886C7;
+    color: white;
+    font-size: 20px;
+}
+
+.add-expense>button:hover {
+    background-color: #A9B5DF;
+    cursor: pointer;
+}
+
+#expense-cost {
+    width: 27%;
+}
+
+#categories {
+    width: 25%;
+}
+
+#expense-desc,#expense-cost,#categories {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.content {
+    padding: 5px;
+    height: 280px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+}
+
+.expense {
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #9ACBD0;
+    color: #2D336B;
+    width: 395px;
+    height: 122px;
+    position: relative;
+}
+
+.desc {
+    font-weight: bold;
+}
+
+.category {
+    font-style: italic;
+}
+
+.remove-expense {
+    text-decoration: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px; 
+    display: block;
+    position: absolute;
+    top: 10px;
+    width: 65px;
+    height: 30px;
+    padding: 5px;
+    top: 80px;
+    right: 10px;
+}
+
+.remove-expense:hover {
+    border: 1px solid black;
+}
+
+@media (max-width: 888px) {
+    main {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .expenses,.chart  {
+        width: 380px
+    }
+
+    .expense {
+        width: 340px;
+        margin: 0px auto;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #expense-cost, #categories {
+        width: 100%;
+    }
+    
+}

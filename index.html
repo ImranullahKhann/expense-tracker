@@ -12,12 +12,55 @@
     </header>
     
     <main>
-        <section class="tasks">
-            Tasks Section
+        <section class="expenses">
+            <h3>Expenses</h3>
+            <div class="expense-tracker">
+                <div class="content">
+                    <div class="expense">
+                        <p class="desc">Eating Doritos</p>
+                        <p class="amount">Cost: 20</p>
+                        <p class="category">Food</p>
+                        <a href="#" class="remove-expense">Remove</a>
+                    </div>
+                    <div class="expense">
+                        <p class="desc">Gas fees</p>
+                        <p class="amount">Cost: 200</p>
+                        <p class="category">Transportation</p>
+                        <a href="#" class="remove-expense">Remove</a>
+                    </div>
+                    <div class="expense">
+                        <p class="desc">Bought a showpiece for the living room</p>
+                        <p class="amount">Cost: 60</p>
+                        <p class="category">Housing</p>
+                        <a href="#" class="remove-expense">Remove</a>
+                    </div>
+                    <div class="expense">
+                        <p class="desc">1234 5678 9 10 12 14 16 18 20 22 24 26 28 30 sdsdsd  3245 sa rrwe</p>
+                        <p class="amount">Cost: 60</p>
+                        <p class="category">Housing</p>
+                        <a href="#" class="remove-expense">Remove</a>
+                    </div>
+                </div>
+                <form class="add-expense">
+                    <input maxlength="64" placeholder="Description" type="text" id="expense-desc" required>
+                    <input min="1" max="100000000" placeholder="Cost" type="number" id="expense-cost" required>
+                    <select name="categories" id="categories">
+                        <option value="Housing">Housing</option>
+                        <option value="Food">Food</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+                        <option value="Miscellaneous">Miscellaneous</option>
+                      </select>
+                    <button>Add</button>
+                </form>
+            </div>
         </section>
 
         <section class="chart">
-            Chart
+            <h3>Chart</h3>
         </section>
     </main>
 
