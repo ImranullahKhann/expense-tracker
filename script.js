@@ -3,6 +3,16 @@ if (localStorage.getItem("data") === null) {
     let data = {
         id: 0,
         expenses: [],
+        categoryExpenses: {
+            housing: 0,
+            food: 0,
+            transportation: 0,
+            entertainment: 0,
+            clothing: 0,
+            healthcare: 0,
+            education: 0,
+            miscellaneous: 0
+        },
         totalCosts: 0
     }
     localStorage.setItem("data", JSON.stringify(data))
@@ -26,8 +36,10 @@ addButton.addEventListener("click", (e) => {
     }
 
     data.id++
-    data.expenses.push(exp);
-    data.totalCosts = data.totalCosts + cost
+    data.expenses.push(exp)
+
+    data.categoryExpenses[cat.toLowerCase()] += cost 
+    data.totalCosts += cost
 
     localStorage.setItem("data", JSON.stringify(data));
 
@@ -38,9 +50,10 @@ let content = document.querySelector(".content")
 let data = JSON.parse(localStorage.getItem("data"))
 let myExpenses = data.expenses
 // display all the expenses  
-for (expense of myExpenses) {
+myExpenses.forEach(expense => {
     const id = expense.id
     const costValue = expense.cost
+    const categ = expense.category
     
     let exp  = document.createElement("div")
     exp.className = "expense"
@@ -54,7 +67,7 @@ for (expense of myExpenses) {
 
     let cat = document.createElement("p")
     cat.className = "category"
-    cat.innerHTML = expense.category
+    cat.innerHTML = categ
     
     let del = document.createElement("button")
     del.innerText = "Remove"
@@ -62,11 +75,12 @@ for (expense of myExpenses) {
     del.addEventListener("click", (e) => {
         e.preventDefault();
 
-        let data = JSON.parse(localStorage.getItem("data"));
+        let data = JSON.parse(localStorage.getItem("data"))
 
-        data.expenses = data.expenses.filter(item => item.id !== id);
+        data.expenses = data.expenses.filter(item => item.id !== id)
 
-        data.totalCosts = data.totalCosts - costValue
+        data.categoryExpenses[categ.toLowerCase()] -= costValue
+        data.totalCosts -= costValue
 
         localStorage.setItem("data", JSON.stringify(data));
 
@@ -79,4 +93,62 @@ for (expense of myExpenses) {
     exp.appendChild(del)
 
     content.appendChild(exp)
-}
+});
+
+// Visualize the chart
+let categoryData = data.categoryExpenses
+
+// Extract labels and values from the JSON object
+const labels = Object.keys(categoryData);
+const values = Object.values(categoryData);
+
+// Define colors for the pie chart
+const backgroundColors = [
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(255, 159, 64, 0.2)',
+    'rgba(201, 203, 207, 0.2)',
+    'rgba(140, 140, 140, 0.2)'
+];
+
+const borderColors = [
+    'rgba(255, 99, 132, 1)',
+    'rgba(54, 162, 235, 1)',
+    'rgba(255, 206, 86, 1)',
+    'rgba(75, 192, 192, 1)',
+    'rgba(153, 102, 255, 1)',
+    'rgba(255, 159, 64, 1)',
+    'rgba(201, 203, 207, 1)',
+    'rgba(140, 140, 140, 1)'
+];
+
+// Create the pie chart using Chart.js
+const chart = document.getElementById('myChart').getContext('2d');
+
+new Chart(chart, {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            data: values,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        plugins: {
+            legend: {
+                position: 'top'
+            },
+            title: {
+                display: true,
+                text: 'Total Expenses: ' + data.totalCosts
+            }
+        }
+    }
+})

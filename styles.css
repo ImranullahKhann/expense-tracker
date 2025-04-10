@@ -160,6 +160,11 @@ h3 {
     border: 1px solid black;
 }
 
+#chart-container {
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 888px) {
     main {
         flex-direction: column;
